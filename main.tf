@@ -66,7 +66,7 @@ resource "azurerm_role_assignment" "contributor_storage" {
 
 resource "azapi_resource" "ai_foundry" {
   type      = "Microsoft.CognitiveServices/accounts@2025-06-01"
-  name      = "${local.prefix}-${var.ai_foundry_name}"
+  name      = "${local.prefix}-foundry-${random_string.unique.result}"
   location  = var.location
   parent_id = azurerm_resource_group.rg.id
 

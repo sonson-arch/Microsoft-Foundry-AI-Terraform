@@ -13,10 +13,6 @@ variable "location" {
   type        = string
 }
 
-variable "ai_foundry_name" {
-  description = "The name of the AI Foundry account"
-  type        = string
-}
 
 variable "ai_project_name" {
   description = "The name of the AI Foundry project"
