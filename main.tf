@@ -58,7 +58,7 @@ resource "azurerm_role_assignment" "contributor_storage" {
 
 resource "azapi_resource" "ai_foundry" {
   type      = "Microsoft.CognitiveServices/accounts@2025-06-01"
-  name      = var.ai_foundry_name
+  name      = "${local.prefix}-${var.ai_foundry_name}"
   location  = var.location
   parent_id = azurerm_resource_group.rg.id
 
@@ -83,7 +83,7 @@ resource "azapi_resource" "ai_foundry" {
 
 resource "azapi_resource" "ai_project" {
   type      = "Microsoft.CognitiveServices/accounts/projects@2025-06-01"
-  name      = coalesce(var.ai_project_name, "${var.ai_foundry_name}-proj")
+  name      = "${local.prefix}-${var.ai_project_name}"
   location  = var.location
   parent_id = azapi_resource.ai_foundry.id
 
