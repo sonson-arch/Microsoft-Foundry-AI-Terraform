@@ -1,5 +1,13 @@
 data "azurerm_client_config" "current" {}
 
+resource "random_string" "unique" {
+  length      = 5
+  min_numeric = 5
+  numeric     = true
+  special     = false
+  lower       = true
+  upper       = false
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = "${local.prefix}-rg"
@@ -15,7 +23,7 @@ resource "azurerm_user_assigned_identity" "uai" {
 
 
 resource "azurerm_storage_account" "sa" {
-  name                          = "${local.prefix}storageaccount"
+  name                          = "${local.prefix}${random_string.unique.result}"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
   account_tier                  = "Standard"
@@ -74,7 +82,7 @@ resource "azapi_resource" "ai_foundry" {
     }
     properties = {
       allowProjectManagement = true
-      customSubDomainName    = var.ai_foundry_name
+      customSubDomainName    = "${local.prefix}-${random_string.unique.result}"
       disableLocalAuth       = false
       publicNetworkAccess    = "Enabled"
     }
