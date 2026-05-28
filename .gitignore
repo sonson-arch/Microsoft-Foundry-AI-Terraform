@@ -1,0 +1,14 @@
+#ignore environment variables file
+env
+tfplan
+.terraform
+.terraform.lock.hcl
+.terraform.tfstate.lock
+
+*.tfstate
+*.tfstate.*
+
+.tfvars
+terraform.tfstate
+
+
