@@ -36,7 +36,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_storage_container" "container" {
-  name                  = "${local.prefix}-documents"
+  name                  = "${local.prefix}dokumenter"
   storage_account_id    = azurerm_storage_account.sa.id
   container_access_type = "private"
 }
@@ -45,7 +45,7 @@ resource "azurerm_search_service" "search" {
   name                = "${local.prefix}-search-service"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  sku                 = "free"
+  sku                 = "basic"
 
   identity {
     type = "SystemAssigned"
