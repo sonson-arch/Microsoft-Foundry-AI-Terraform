@@ -1,3 +1,3 @@
 locals {
-    prefix = "shs"
+  prefix = "shs"
 }

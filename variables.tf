@@ -25,7 +25,7 @@ variable "ai_foundry_name" {
 variable "ai_project_name" {
   description = "The name of the AI Foundry project"
   type        = string
-  default     = null 
+  default     = null
 }
 
 variable "create_user_assigned_identity" {
